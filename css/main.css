@@ -175,8 +175,8 @@ template {
   display: none;
 }
 ::selection {
-  background: var(--selection-bg);
-  color: var(--selection-color);
+  background: #ffb5c5;
+  color: #000;
 }
 html,
 body {
@@ -303,7 +303,7 @@ td {
   border-bottom-width: 1px;
 }
 .btn {
-  background: var(--btn-default-bg);
+  background: #ffe1ff;
   border: 2px solid var(--btn-default-border-color);
   border-radius: 2px;
   color: var(--btn-default-color);
@@ -1094,6 +1094,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
+  color: #000;
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
@@ -1101,7 +1102,7 @@ pre code {
   margin: 0;
 }
 .site-subtitle {
-  color: #ddd;
+  color: #000;
   font-size: 0.8125em;
   margin: 10px 10px 0;
 }
@@ -1273,7 +1274,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #0659af;
+    background: #ff93f4;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1645,12 +1646,12 @@ pre code {
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 1160px;
+    width: 70em;
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 73%;
+    width: 85%;
   }
 }
 .use-motion .footer {
@@ -2554,7 +2555,7 @@ mark.search-keyword {
 }
 header.header {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 30px 30px 30px 30px;
   box-shadow: initial;
 }
 @media (max-width: 991px) {
@@ -2576,12 +2577,12 @@ header.header {
 }
 @media (min-width: 1200px) {
   .main {
-    width: 1160px;
+    width: 70em;
   }
 }
 @media (min-width: 1600px) {
   .main {
-    width: 73%;
+    width: 85%;
   }
 }
 @media (max-width: 991px) {
@@ -2591,7 +2592,7 @@ header.header {
   }
 }
 .main-inner {
-  border-radius: initial;
+  border-radius: 30px 30px 30px 30px;
   box-sizing: border-box;
   width: calc(100% - 252px);
 }
@@ -2626,7 +2627,7 @@ header.header {
   }
 }
 .site-brand-container {
-  background: var(--theme-color);
+  background: #fffafa;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
@@ -2733,7 +2734,7 @@ header.header {
   }
   .sidebar-inner {
     background: var(--content-bg-color);
-    border-radius: initial;
+    border-radius: 30px;
     box-shadow: initial;
     box-sizing: border-box;
     color: var(--text-color);
