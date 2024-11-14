@@ -6,7 +6,7 @@
   <link href="https://eclipse0326.github.io/atom.xml" rel="self"/>
   
   <link href="https://eclipse0326.github.io/"/>
-  <updated>2024-11-14T05:56:39.622Z</updated>
+  <updated>2024-11-14T08:12:42.026Z</updated>
   <id>https://eclipse0326.github.io/</id>
   
   <author>
@@ -21,10 +21,11 @@
     <link href="https://eclipse0326.github.io/2024/11/13/test/"/>
     <id>https://eclipse0326.github.io/2024/11/13/test/</id>
     <published>2024-11-13T05:45:59.000Z</published>
-    <updated>2024-11-14T05:56:39.622Z</updated>
+    <updated>2024-11-14T08:12:42.026Z</updated>
     
     
-    <summary type="html">&lt;p&gt;xxxxxxxxxxxxxxxxxxx&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;xxxxxxxxxxxxxxxxxxx&lt;/p&gt;
+&lt;img data-src=&quot;/2024/11/13/test/1.jpg&quot; class=&quot;&quot;&gt;</summary>
     
     
     
