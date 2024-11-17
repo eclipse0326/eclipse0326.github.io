@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>eclipse blog</title>
+  
+  <subtitle>Tomorrow is another day !!!</subtitle>
+  <link href="https://eclipse0326.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://eclipse0326.github.io/"/>
+  <updated>2024-11-14T08:36:21.382Z</updated>
+  <id>https://eclipse0326.github.io/</id>
+  
+  <author>
+    <name>Jay CHAN</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://eclipse0326.github.io/2024/11/13/test/"/>
+    <id>https://eclipse0326.github.io/2024/11/13/test/</id>
+    <published>2024-11-13T05:45:59.000Z</published>
+    <updated>2024-11-14T08:36:21.382Z</updated>
+    
+    
+    <summary type="html">python 代码</summary>
+    
+    
+    
+    <category term="python" scheme="https://eclipse0326.github.io/categories/python/"/>
+    
+    
+    <category term="编程技术" scheme="https://eclipse0326.github.io/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="xxX" scheme="https://eclipse0326.github.io/tags/xxX/"/>
+    
+    <category term="sassd" scheme="https://eclipse0326.github.io/tags/sassd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://eclipse0326.github.io/2024/11/13/hello-world/"/>
+    <id>https://eclipse0326.github.io/2024/11/13/hello-world/</id>
+    <published>2024-11-13T03:13:23.628Z</published>
+    <updated>2024-11-14T08:15:53.503Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>
