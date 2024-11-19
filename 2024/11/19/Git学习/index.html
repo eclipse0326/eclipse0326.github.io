@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-bounce.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"eclipse0326.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":{"enable":true,"onlypost":false,"loadingImg":"/images/loading.gif"},"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="梳 理 之 前 所 学 的 git 知 识 点 ， 查 漏 补 缺 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="eclipse blog">
+<meta property="og:description" content="梳 理 之 前 所 学 的 git 知 识 点 ， 查 漏 补 缺 。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122327389.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122438740.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122501504.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122701516.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122712090.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122806613.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123235160.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123220861.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123430435.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123902303.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123927488.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123953391.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124024285.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124342264.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124358139.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124411556.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124440884.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124522942.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124555625.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124624603.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124941866.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125317433.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125338535.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125409357.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125501239.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125724051.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125801013.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529130044971.png">
+<meta property="og:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529130105619.png">
+<meta property="article:published_time" content="2024-11-19T06:38:54.000Z">
+<meta property="article:modified_time" content="2024-11-19T06:41:11.197Z">
+<meta property="article:author" content="Jay CHAN">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122327389.png">
+
+
+<link rel="canonical" href="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/","path":"2024/11/19/Git学习/","title":"Git"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Git | eclipse blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<link rel="alternate" href="/atom.xml" title="eclipse blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">eclipse blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tomorrow is another day !!!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+    
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">Git版本控制工具学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#01-Git-%E5%88%9D%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">01.Git 初识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-Git-%E4%BB%93%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">02.Git 仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-Git-%E7%9A%84%E4%B8%89%E4%B8%AA%E5%8C%BA%E5%9F%9F"><span class="nav-number">1.3.</span> <span class="nav-text">03.Git 的三个区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#04-Git-%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="nav-number">1.4.</span> <span class="nav-text">04.Git 文件状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#05-Git-%E6%9A%82%E5%AD%98%E5%8C%BA%E4%BD%9C%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">05.Git 暂存区作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-%E7%BB%83%E4%B9%A0-%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">06.练习-登录页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#07-Git-%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="nav-number">1.7.</span> <span class="nav-text">07.Git-切换版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#08-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">08.删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.9.</span> <span class="nav-text">09.忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E5%88%86%E6%94%AF%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.10.</span> <span class="nav-text">10.分支的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E7%BB%83%E4%B9%A0-%E7%99%BB%E5%BD%95-bug-%E4%BF%AE%E5%A4%8D"><span class="nav-number">1.11.</span> <span class="nav-text">11.练习-登录 bug 修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E5%88%86%E6%94%AF-%E5%90%88%E5%B9%B6%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">1.12.</span> <span class="nav-text">12.分支-合并与删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-%E5%88%86%E6%94%AF-%E5%90%88%E5%B9%B6%E4%B8%8E%E6%8F%90%E4%BA%A4"><span class="nav-number">1.13.</span> <span class="nav-text">13.分支-合并与提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E5%88%86%E6%94%AF-%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81"><span class="nav-number">1.14.</span> <span class="nav-text">14.分支-合并冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.15.</span> <span class="nav-text">15.Git 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-Git-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">1.16.</span> <span class="nav-text">16.Git 远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Git-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93-%E5%85%8B%E9%9A%86"><span class="nav-number">1.17.</span> <span class="nav-text">17.Git 远程仓库 - 克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-%E5%A4%9A%E4%BA%BA%E5%8D%8F%E5%90%8C%E5%BC%80%E5%8F%91"><span class="nav-number">1.18.</span> <span class="nav-text">18.多人协同开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-VSCode-%E4%B8%AD%E4%BD%BF%E7%94%A8-Git"><span class="nav-number">1.19.</span> <span class="nav-text">19.VSCode 中使用 Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-%E6%A1%88%E4%BE%8B-%E5%8F%91%E5%B8%83%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0"><span class="nav-number">1.20.</span> <span class="nav-text">20.案例-发布数据管理平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-Git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.21.</span> <span class="nav-text">21.Git 常用命令</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jay CHAN"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jay CHAN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/eclipse0326" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;eclipse0326" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </br>
+    
+    
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <!-- modify icon to fire by szw -->
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="recent_posts_li">
+              <a href="/" title="" target="_blank"></a>
+            </li>
+          
+            <li class="recent_posts_li">
+              <a href="/" title="" target="_blank"></a>
+            </li>
+          
+            <li class="recent_posts_li">
+              <a href="/" title="" target="_blank"></a>
+            </li>
+          
+            <li class="recent_posts_li">
+              <a href="/" title="" target="_blank"></a>
+            </li>
+          
+            <li class="recent_posts_li">
+              <a href="/" title="" target="_blank"></a>
+            </li>
+          
+        </ul>
+      </div>
+    
+    </br>
+            <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+        (function(){
+
+        var digit=
+            [
+                [
+                    [0,0,1,1,1,0,0],
+                    [0,1,1,0,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,0,1,1,0],
+                    [0,0,1,1,1,0,0]
+                ],//0
+                [
+                    [0,0,0,1,1,0,0],
+                    [0,1,1,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [1,1,1,1,1,1,1]
+                ],//1
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,1,1,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,1,1,1,1,1]
+                ],//2
+                [
+                    [1,1,1,1,1,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//3
+                [
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,1,0],
+                    [0,0,1,1,1,1,0],
+                    [0,1,1,0,1,1,0],
+                    [1,1,0,0,1,1,0],
+                    [1,1,1,1,1,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,1,1]
+                ],//4
+                [
+                    [1,1,1,1,1,1,1],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,1,1,1,1,0],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//5
+                [
+                    [0,0,0,0,1,1,0],
+                    [0,0,1,1,0,0,0],
+                    [0,1,1,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//6
+                [
+                    [1,1,1,1,1,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,0,1,1,0,0,0]
+                ],//7
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//8
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,1,1,0,0,0,0]
+                ],//9
+                [
+                    [0,0,0,0,0,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,1,1,1,0,0],
+                    [0,0,0,0,0,0,0]
+                ]//:
+            ];
+
+        var canvas = document.getElementById('canvas');
+
+        if(canvas.getContext){
+            var cxt = canvas.getContext('2d');
+            //声明canvas的宽高
+            var H = 100,W = 700;
+            canvas.height = H;
+            canvas.width = W;
+            cxt.fillStyle = '#f00';
+            cxt.fillRect(10,10,50,50);
+
+            //存储时间数据
+            var data = [];
+            //存储运动的小球
+            var balls = [];
+            //设置粒子半径
+            var R = canvas.height/20-1;
+            (function(){
+                var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+                //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+                data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+            })();
+
+            /*生成点阵数字*/
+            function renderDigit(index,num){
+                for(var i = 0; i < digit[num].length; i++){
+                    for(var j = 0; j < digit[num][i].length; j++){
+                        if(digit[num][i][j] == 1){
+                            cxt.beginPath();
+                            cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                            cxt.closePath();
+                            cxt.fill();
+                        }
+                    }
+                }
+            }
+
+            /*更新时钟*/
+            function updateDigitTime(){
+                var changeNumArray = [];
+                var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+                var NewData = [];
+                NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+                for(var i = data.length-1; i >=0 ; i--){
+                    //时间发生变化
+                    if(NewData[i] !== data[i]){
+                        //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                        changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+                    }
+                }
+                //增加小球
+                for(var i = 0; i< changeNumArray.length; i++){
+                    addBalls.apply(this,changeNumArray[i].split('_'));
+                }
+                data = NewData.concat();
+            }
+
+            /*更新小球状态*/
+            function updateBalls(){
+                for(var i = 0; i < balls.length; i++){
+                    balls[i].stepY += balls[i].disY;
+                    balls[i].x += balls[i].stepX;
+                    balls[i].y += balls[i].stepY;
+                    if(balls[i].x > W + R || balls[i].y > H + R){
+                        balls.splice(i,1);
+                        i--;
+                    }
+                }
+            }
+
+            /*增加要运动的小球*/
+            function addBalls(index,num){
+                var numArray = [1,2,3];
+                var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+                for(var i = 0; i < digit[num].length; i++){
+                    for(var j = 0; j < digit[num][i].length; j++){
+                        if(digit[num][i][j] == 1){
+                            var ball = {
+                                x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                                y:i*2*(R+1)+(R+1),
+                                stepX:Math.floor(Math.random() * 4 -2),
+                                stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                                color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                                disY:1
+                            };
+                            balls.push(ball);
+                        }
+                    }
+                }
+            }
+
+            /*渲染*/
+            function render(){
+                //重置画布宽度，达到清空画布的效果
+                canvas.height = 100;
+                //渲染时钟
+                for(var i = 0; i < data.length; i++){
+                    renderDigit(i,data[i]);
+                }
+                //渲染小球
+                for(var i = 0; i < balls.length; i++){
+                    cxt.beginPath();
+                    cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+                    cxt.fillStyle = balls[i].color;
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+
+            clearInterval(oTimer);
+            var oTimer = setInterval(function(){
+                //更新时钟
+                updateDigitTime();
+                //更新小球状态
+                updateBalls();
+                //渲染
+                render();
+            },50);
+        }
+
+    })();
+</script>
+
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://monica4125.github.io/" title="https:&#x2F;&#x2F;monica4125.github.io" rel="noopener" target="_blank">monica</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://blog.zbwer.work/" title="https:&#x2F;&#x2F;blog.zbwer.work&#x2F;" rel="noopener" target="_blank">zbwer</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    
+  </aside>
+  <div id="sidebar-dimmer"></div>
+  
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://eclipse0326.github.io/2024/11/19/Git%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jay CHAN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="eclipse blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Git | eclipse blog">
+      <meta itemprop="description" content="梳 理 之 前 所 学 的 git 知 识 点 ， 查 漏 补 缺 。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-11-19 14:38:54 / Modified: 14:41:11" itemprop="dateCreated datePublished" datetime="2024-11-19T14:38:54+08:00">2024-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">其他工具</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>5.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">梳 理 之 前 所 学 的 git 知 识 点 ， 查 漏 补 缺 。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Git版本控制工具学习"><a href="#Git版本控制工具学习" class="headerlink" title="Git版本控制工具学习"></a>Git版本控制工具学习</h1><h2 id="01-Git-初识"><a href="#01-Git-初识" class="headerlink" title="01.Git 初识"></a>01.Git 初识</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Git">概念</a>：一个免费开源，分布式的代码版本控制系统，帮助开发团队维护代码</p>
+</li>
+<li><p>作用：记录代码内容，切换代码版本，多人开发时高效合并代码内容</p>
+</li>
+<li><p>如何学：</p>
+<p>个人本机使用：Git 基础命令和概念</p>
+<p>多人共享使用：团队开发同一个项目的代码版本管理</p>
+</li>
+</ol>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122327389.png" class="" title="image-20230529122327389">
+
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/">Windows</a><a target="_blank" rel="noopener" href="https://git-scm.com/">系统</a>：exe 程序，默认下一步即可</p>
+<p>Mac系统：dmg 程序，默认下一步即可</p>
+<p>检验成功：</p>
+<p>1.打开 bash 终端（git 专用）</p>
+<p>2.命令：git -v（查看版本号）</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122438740.png" class="" title="image-20230529122438740">
+
+<p>配置：用户名和邮箱，应用在每次提交代码版本时表明自己身份</p>
+<p>命令：</p>
+<p>git config –global user.name “itheima”</p>
+<p>git config –global user.email “<a href="mailto:&#105;&#x74;&#x68;&#101;&#105;&#x6d;&#97;&#64;&#x69;&#116;&#x63;&#97;&#x73;&#x74;&#x2e;&#99;&#x6e;">&#105;&#x74;&#x68;&#101;&#105;&#x6d;&#97;&#64;&#x69;&#116;&#x63;&#97;&#x73;&#x74;&#x2e;&#99;&#x6e;</a>“</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122501504.png" class="" title="image-20230529122501504">
+
+<p>1.为何学习 Git ？</p>
+<p>ü 管理代码版本，记录，切换，合并代码</p>
+<p>2.Git 学习：</p>
+<p>ü 现在本机自己使用</p>
+<p>ü 再学习多人共享使用</p>
+<p>3.如何安装使用？</p>
+<p>ü 程序双击安装</p>
+<p>ü 在 VSCode 中使用 bash 终端以及 git 命令</p>
+<h2 id="02-Git-仓库"><a href="#02-Git-仓库" class="headerlink" title="02.Git 仓库"></a>02.Git 仓库</h2><p>Git 仓库（repository）：记录文件状态内容的地方，存储着修改的历史记录</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122701516.png" class="" title="image-20230529122701516">
+
+<p>创建：</p>
+<p>1.把本地文件夹转换成 Git 仓库：命令 git init</p>
+<p>2.从其他服务器上克隆 Git 仓库</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122712090.png" class="" title="image-20230529122712090">
+
+<p>需求：创建一个空白的 Git 仓库</p>
+<p>1.什么是 Git 仓库 ？</p>
+<p>ü 记录文件状态内容和历史记录的地方（.git 文件夹）</p>
+<p>2.如何创建 Git 仓库？</p>
+<p>ü 把本地文件夹转换成 Git 仓库：命令 git init</p>
+<p>ü 从其他服务器上克隆 Git 仓库</p>
+<h2 id="03-Git-的三个区域"><a href="#03-Git-的三个区域" class="headerlink" title="03.Git 的三个区域"></a>03.Git 的三个区域</h2><p>Git 使用时：</p>
+<p>工作区：实际开发时操作的文件夹</p>
+<p>暂存区：保存之前的准备区域（暂存改动过的文件）</p>
+<p>版本库：提交并保存暂存区中的内容，产生一个版本快照</p>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git add 文件名</td>
+<td>暂存指定文件</td>
+</tr>
+<tr>
+<td>git add .</td>
+<td>暂存所有改动的文件</td>
+</tr>
+<tr>
+<td>git commit -m “注释说明”</td>
+<td>提交并保存，产生版本快照</td>
+</tr>
+</tbody></table>
+<p>需求：把登录页面新增后，暂存并提交</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529122806613.png" class="" title="image-20230529122806613">
+
+<p>1.Git 使用时有哪些区域 ？</p>
+<p>ü 工作区，暂存区，版本库</p>
+<p>2.工作区的内容，最终要如何保存在版本库中？</p>
+<p>ü git add 添加到暂存区</p>
+<p>ü等待时机后 git commit 提交保存到版本库，产生一次版本快照记录</p>
+<h2 id="04-Git-文件状态"><a href="#04-Git-文件状态" class="headerlink" title="04.Git 文件状态"></a>04.Git 文件状态</h2><p>Git 文件 2 种状态：</p>
+<p>ü未跟踪：新文件，从未被 Git 管理过</p>
+<p>ü已跟踪：Git 已经知道和管理的文件</p>
+<table>
+<thead>
+<tr>
+<th><strong>文件状态</strong></th>
+<th><strong>概念</strong></th>
+<th><strong>场景</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>未跟踪（U）</td>
+<td>从未被 Git 管理过</td>
+<td>新文件</td>
+</tr>
+<tr>
+<td>新添加（A）</td>
+<td>第一次被 Git 暂存</td>
+<td>之前版本记录无此文件</td>
+</tr>
+<tr>
+<td>未修改（’’）</td>
+<td>三个区域统一</td>
+<td>提交保存后</td>
+</tr>
+<tr>
+<td>已修改（M）</td>
+<td>工作区内容变化</td>
+<td>修改了内容产生</td>
+</tr>
+</tbody></table>
+<p>使用：修改文件，暂存，提交保存记录，如此反复</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123235160.png" class="" title="image-20230529123235160">
+
+<p>需求：新增 css 文件，并使用 git status -s 查看文件状态，并最终提交</p>
+<p>第一列是暂存区状态</p>
+<p>第二列是工作区状态</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123220861.png" class="" title="image-20230529123220861">
+
+<p>1.Git 文件状态分为哪 2 种 ？</p>
+<p>ü 未跟踪和已跟踪（新添加，未修改，已修改）</p>
+<p>2.如何查看暂存区和工作区文件状态？</p>
+<p>ü git status -s</p>
+<h2 id="05-Git-暂存区作用"><a href="#05-Git-暂存区作用" class="headerlink" title="05.Git 暂存区作用"></a>05.Git 暂存区作用</h2><p>暂存区：暂时存储，可以临时恢复代码内容，与版本库解耦</p>
+<p>暂存区 -&gt; 覆盖 -&gt; 工作区，命令：git restore 目标文件（注意：完全确认覆盖时使用）</p>
+<p>从暂存区移除文件，命令：git rm –cached 目标文件</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123430435.png" class="" title="image-20230529123430435">
+
+<p>1.如何移除暂存区已暂存的文件？</p>
+<p>ü git rm –cached 目标文件</p>
+<h2 id="06-练习-登录页面"><a href="#06-练习-登录页面" class="headerlink" title="06.练习-登录页面"></a>06.练习-登录页面</h2><p>需求：新增 JS 代码并暂存提交产生新的版本快照</p>
+<p>步骤</p>
+<p>1.新增 js 文件和内容</p>
+<p>2.临时存放在暂存区</p>
+<p>3.提交保存到版本库</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123902303.png" class="" title="image-20230529123902303">
+
+<h2 id="07-Git-切换版本"><a href="#07-Git-切换版本" class="headerlink" title="07.Git-切换版本"></a>07.Git-切换版本</h2><p>概念：把版本库某个版本对应的内容快照，恢复到工作区&#x2F;暂存区</p>
+<p>查看提交历史：git log –oneline </p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123927488.png" class="" title="image-20230529123927488">
+
+
+
+<p>回退命令：</p>
+<p>git reset –soft 版本号（其他文件未跟踪）</p>
+<p>git reset –hard 版本号</p>
+<p>git reset –mixed 版本号 （与 git reset 等价）</p>
+<p>注意1：只有记录在版本库的提交记录才能恢复</p>
+<p>注意2：回退后，继续修改-&gt;暂存-&gt;提交操作即可（产生新的提交记录过程）</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529123953391.png" class="" title="image-20230529123953391">
+
+<p>1.什么是 Git 回退版本？</p>
+<p>ü 把版本库某个版本对应的内容快照，恢复到工作区&#x2F;暂存区</p>
+<p>2.强制覆盖暂存区和工作区的命令？</p>
+<p>ü git reset –hard 版本号</p>
+<p>3.如何查看提交历史？</p>
+<p>ü git log –oneline </p>
+<p>ü git reflog –oneline</p>
+<h2 id="08-删除文件"><a href="#08-删除文件" class="headerlink" title="08.删除文件"></a>08.删除文件</h2><p>需求：删除 editor.js 文件，并产生一次版本记录</p>
+<p>步骤：</p>
+<p>1.手动删除工作区文件</p>
+<p>2.暂存变更&#x2F;手动删除暂存区文件造成变更</p>
+<p>3.提交保存</p>
+<p>总结：</p>
+<p>工作区只要改变，都可以暂存提交产生新记录</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124024285.png" class="" title="image-20230529124024285">
+
+
+
+<h2 id="09-忽略文件"><a href="#09-忽略文件" class="headerlink" title="09.忽略文件"></a>09.忽略文件</h2><p>概念：.gitignore 文件可以让 git 彻底忽略跟踪指定文件</p>
+<p>目的：让 git 仓库更小更快，避免重复无意义的文件管理</p>
+<p>例如：</p>
+<p>1.系统或软件自动生成的文件</p>
+<p>2.编译产生的结果文件</p>
+<p>3.运行时生成的日志文件，缓存文件，临时文件等</p>
+<p>4.涉密文件，密码，秘钥等文件</p>
+<p>创建：</p>
+<p>1.项目根目录新建 .gitignore 文件</p>
+<p>2.填入相应配置来忽略指定文件</p>
+<p>注意：如果文件已经被暂存区跟踪过，可以从暂存区移除即可</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124342264.png" class="" title="image-20230529124342264">
+
+
+
+<h2 id="10-分支的概念"><a href="#10-分支的概念" class="headerlink" title="10.分支的概念"></a>10.分支的概念</h2><p>概念：本质上是指向提交节点的可变指针，默认名字是 master</p>
+<p>注意：HEAD 指针影响工作区&#x2F;暂存区的代码状态</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124358139.png" class="" title="image-20230529124358139">
+
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124411556.png" class="" title="image-20230529124411556">
+
+<p>场景：开发新需求 &#x2F; 修复 Bug，保证主线代码随时可用，多人协同开发提高效率</p>
+<p>例如：</p>
+<p>在现有代码上创建新分支完成内容列表业务</p>
+<p>突然需要紧急修复 Bug - 单独创建分支解决 Bug</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124440884.png" class="" title="image-20230529124440884">
+
+
+
+<p>需求：创建内容列表 content 分支，并产生 3 次提交记录</p>
+<p>步骤：</p>
+<ol>
+<li>创建分支命令：git branch 分支名</li>
+</ol>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124522942.png" class="" title="image-20230529124522942">
+
+<ol start="2">
+<li>切换分支命令：git checkout 分支名</li>
+</ol>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124555625.png" class="" title="image-20230529124555625">
+
+
+
+<ol start="3">
+<li><p>工作区准备代码并暂存提交，重复 3 次</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124624603.png" class="" title="image-20230529124624603"></li>
+</ol>
+<p>1.什么是 Git 分支？</p>
+<p>ü 指针，指向提交记录</p>
+<p>2.HEAD 指针的作用？</p>
+<p>ü 影响暂存区和工作区的代码</p>
+<p>3.如何创建和切换指针？</p>
+<p>ü git branch 分支名</p>
+<p>ü git checkout 分支名</p>
+<h2 id="11-练习-登录-bug-修复"><a href="#11-练习-登录-bug-修复" class="headerlink" title="11.练习-登录 bug 修复"></a>11.练习-登录 bug 修复</h2><p>需求：新建 login-bug 分支，做 2 次提交记录（对手机号长度，验证码长度做判断）</p>
+<p>步骤：</p>
+<p>1.切回到主分支：git checkout master</p>
+<p>2.创建新分支：git branch login-bug</p>
+<p>3.切换新分支：git checkout login-bug</p>
+<p>4.修改代码，暂存，提交产生版本记录</p>
+<h2 id="12-分支-合并与删除"><a href="#12-分支-合并与删除" class="headerlink" title="12.分支-合并与删除"></a>12.分支-合并与删除</h2><p>需求：把 login-bug 合并回到 master 分支并删除 login-bug 分支</p>
+<p>步骤：</p>
+<p>1.切回到要合入的分支上：git checkout master</p>
+<p>2.合并其他分支过来：git merge login-bug</p>
+<p>3.删除合并后的分支指针：git branch -d login-bug</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529124941866.png" class="" title="image-20230529124941866">
+
+
+
+<h2 id="13-分支-合并与提交"><a href="#13-分支-合并与提交" class="headerlink" title="13.分支-合并与提交"></a>13.分支-合并与提交</h2><p>合并提交：发生于原分支产生了新的提交记录后，再合并回去时发生，自动使用多个快照记录合并后产生一次新的提交</p>
+<p>步骤：</p>
+<p>1.切回到要合入的分支上：git checkout master</p>
+<p>2.合并其他分支过来：git merge content</p>
+<p>3.删除合并后的分支：git branch -d content</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125317433.png" class="" title="image-20230529125317433">
+
+<p>最后合并回到主分支上时，提交记录流程图：</p>
+<p>注意：提交记录的顺序按照产生的先后顺序排列，而非合并的先后顺序</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125338535.png" class="" title="image-20230529125338535">
+
+
+
+<h2 id="14-分支-合并冲突"><a href="#14-分支-合并冲突" class="headerlink" title="14.分支-合并冲突"></a>14.分支-合并冲突</h2><p>需求1：基于 master 新建 publish 分支，完成发布文章业务，然后修改内容页面的 html 文件的 title 标签，并提交一次</p>
+<p>需求2：切换到 master，也在修改内容页面的 html 文件的 title 标签，并提交一次</p>
+<p>冲突：把 publish 分支合并到 master 回来，产生合并冲突</p>
+<p>概念：不同分支中，对同一个文件的同一部分修改，Git 无法干净的合并，产生合并冲突</p>
+<p>解决：</p>
+<p>1.打开 VSCode 找到冲突文件并手动解决</p>
+<p>2.解决后需要提交一次记录</p>
+<p>避免：（多交流）</p>
+<p>1.按页面划分不同分支开发</p>
+<p>2.公共代码在统一文件夹维护</p>
+<p>3.Node等软件版本统一，npm 包统一下载</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125409357.png" class="" title="image-20230529125409357">
+
+<h2 id="15-Git-常用命令"><a href="#15-Git-常用命令" class="headerlink" title="15.Git 常用命令"></a>15.Git 常用命令</h2><table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>注意</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git -v</td>
+<td>查看 git 版本</td>
+<td></td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化 git 仓库</td>
+<td></td>
+</tr>
+<tr>
+<td>git add 文件标识</td>
+<td>暂存某个文件</td>
+<td>文件标识以终端为起始的相对路径</td>
+</tr>
+<tr>
+<td>git add .</td>
+<td>暂存所有文件</td>
+<td></td>
+</tr>
+<tr>
+<td>git commit -m ‘说明注释’</td>
+<td>提交产生版本记录</td>
+<td>每次提交，把暂存区内容快照一份</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看文件状态 - 详细信息</td>
+<td></td>
+</tr>
+<tr>
+<td>git status -s</td>
+<td>查看文件状态 - 简略信息</td>
+<td>第一列是暂存区状态，第二列是工作区状态</td>
+</tr>
+<tr>
+<td>git ls-files</td>
+<td>查看暂存区文件列表</td>
+<td></td>
+</tr>
+<tr>
+<td>git restore 文件标识</td>
+<td>从暂存区恢复到工作区</td>
+<td>如果文件标识为 . 则恢复所有文件</td>
+</tr>
+<tr>
+<td>git rm –cached 文件标识</td>
+<td>从暂存区移除文件</td>
+<td>不让 git 跟踪文件变化</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>查看提交记录 - 详细信息</td>
+<td></td>
+</tr>
+<tr>
+<td>git log –oneline</td>
+<td>查看提交记录 - 简略信息</td>
+<td>版本号 分支指针 提交时说明注释</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>注意</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git reflog –oneline</td>
+<td>查看完整历史 - 简略消息</td>
+<td>包括提交，切换，回退等所有记录</td>
+</tr>
+<tr>
+<td>git reset 版本号</td>
+<td>切换版本代码到暂存区和工作区</td>
+<td>–soft 模式保留暂存区和工作区原本内容  –hard 模式不保留暂存区和工作区原本内容  –mixed 模式不保留暂存区，工作区保留（默认）  先覆盖到暂存区，再用暂存区对比覆盖工作区</td>
+</tr>
+<tr>
+<td>git branch 分支名</td>
+<td>创建分支</td>
+<td></td>
+</tr>
+<tr>
+<td>git branch</td>
+<td>查看本地分支</td>
+<td></td>
+</tr>
+<tr>
+<td>git branch -d 分支名</td>
+<td>删除分支</td>
+<td>请确保记录已经合并到别的分支下，再删除分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换分支</td>
+<td></td>
+</tr>
+<tr>
+<td>git checkout -b 分支名</td>
+<td>创建并立刻切换分支</td>
+<td></td>
+</tr>
+<tr>
+<td>git merge 分支名</td>
+<td>把分支提交历史记录合并到当前所在分支</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="16-Git-远程仓库"><a href="#16-Git-远程仓库" class="headerlink" title="16.Git 远程仓库"></a>16.Git 远程仓库</h2><p>概念：托管在因特网或其他网络中的你的项目的版本库</p>
+<p>作用：保存版本库的历史记录，多人协作</p>
+<p>创建：公司自己服务器 &#x2F; 第三方托管平台（Gitee，GitLab，GitHub…）</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125501239.png" class="" title="image-20230529125501239">
+
+<p>需求：创建远程版本库，并把本地 Git 仓库推送上去保存</p>
+<p>步骤：</p>
+<p>1.注册第三方托管平台网站账号</p>
+<p>2.新建仓库得到远程仓库 Git 地址</p>
+<p>3.本地 Git 仓库添加远程仓库原点地址</p>
+<p>命令：git remote add 远程仓库别名 远程仓库地址</p>
+<p>例如：git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/lidongxu/work.git">https://gitee.com/lidongxu/work.git</a></p>
+<p>4.本地 Git 仓库推送版本记录到远程仓库</p>
+<p>命令：git push -u 远程仓库别名 本地和远程分支名</p>
+<p>例如：git push -u origin master</p>
+<p>完整写法：git push –set-upstream origin master:master</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125724051.png" class="" title="image-20230529125724051">
+
+
+
+<p>1.远程版本库的作用？</p>
+<p>ü 保存提交历史记录，多人共享</p>
+<p>2.远程版本库使用步骤？</p>
+<p>ü 创建远程版本库（自己服务器&#x2F;第三方托管平台）</p>
+<p>ü 本地版本库设置远程地址</p>
+<p>ü 推送本地版本库到远程</p>
+<p>3.推送的命令？</p>
+<p>ü git push -u origin master</p>
+<h2 id="17-Git-远程仓库-克隆"><a href="#17-Git-远程仓库-克隆" class="headerlink" title="17.Git 远程仓库 - 克隆"></a>17.Git 远程仓库 - 克隆</h2><p>克隆：拷贝一个 Git 仓库到本地，进行使用</p>
+<p>命令：git clone 远程仓库地址，例如：git clone <a target="_blank" rel="noopener" href="https://gitee.com/lidongxu/work.git">https://gitee.com/lidongxu/work.git</a></p>
+<p>效果：在运行命令所在文件夹，生成 work 项目文件夹（包含版本库，并映射到暂存区和工作区）</p>
+<p>注意1：Git 本地仓库已经建立好和远程仓库的链接</p>
+<p>注意2：仓库公开随意克隆，推送需要身为仓库团队成员</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529125801013.png" class="" title="image-20230529125801013">
+
+
+
+<h2 id="18-多人协同开发"><a href="#18-多人协同开发" class="headerlink" title="18.多人协同开发"></a>18.多人协同开发</h2><p>需求：小传新代码共享给小智</p>
+<p>步骤：</p>
+<p>1.小传开发代码 -&gt; 工作区 -&gt; 暂存区 -&gt; 提交 -&gt; 拉取（可选）-&gt; 推送</p>
+<p>2.小智 -&gt; 拉取（后续也可以开发代码 -&gt; … -&gt; 推送）</p>
+<p>3.想要看到别人同步上去的最新内容：git pull origin master 等价于 </p>
+<p>git fetch origin master:master（获取远程分支记录到本地，未合并）</p>
+<p>git merge origin&#x2F;master (把远程分支记录合并到所在分支下）</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529130044971.png" class="" title="image-20230529130044971">
+
+
+
+<h2 id="19-VSCode-中使用-Git"><a href="#19-VSCode-中使用-Git" class="headerlink" title="19.VSCode 中使用 Git"></a>19.VSCode 中使用 Git</h2><p>使用：源代码管理，进行暂存，撤销，对比差异，提交等操作</p>
+<p>注意：VSCode 打开的项目文件夹下需要有 .git 仓库</p>
+<img data-src="/2024/11/19/Git%E5%AD%A6%E4%B9%A0/image-20230529130105619.png" class="" title="image-20230529130105619">
+
+
+
+<h2 id="20-案例-发布数据管理平台"><a href="#20-案例-发布数据管理平台" class="headerlink" title="20.案例-发布数据管理平台"></a>20.案例-发布数据管理平台</h2><p>需求：把 Webpack 压缩好的 dist 分发文件夹网页，部署到码云上，开启 Page 服务在互联网中浏览</p>
+<p>步骤：</p>
+<p>1.初始化本地 Git 仓库（这次是非空文件夹-配套素材 dist 文件夹）</p>
+<p>2.初始化远程 Git 仓库（这一次也是非空的）</p>
+<p>3.本地配置远程仓库链接</p>
+<p>4.本地拉取合并一下（确认本地要包含远程内容时使用）</p>
+<p>5.本地推送到远程 Git 仓库</p>
+<p>6.开启 page 网页服务得到地址浏览</p>
+<h2 id="21-Git-常用命令"><a href="#21-Git-常用命令" class="headerlink" title="21.Git 常用命令"></a>21.Git 常用命令</h2><table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>注意</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git remote add 远程仓库别名 远程仓库地址</td>
+<td>添加远程仓库地址</td>
+<td>别名唯一，地址是 .git 结尾的网址</td>
+</tr>
+<tr>
+<td>git remote -v</td>
+<td>查看远程仓库地址</td>
+<td></td>
+</tr>
+<tr>
+<td>git remote remove 远程仓库别名</td>
+<td>删除远程仓库地址</td>
+<td></td>
+</tr>
+<tr>
+<td>git pull 远程仓库别名 分支名</td>
+<td>拉取</td>
+<td>完整写法：git pull 远程仓库别名 远程分支名:本地分支名  等价于：git fetch 和 git merge</td>
+</tr>
+<tr>
+<td>git push 远程仓库别名 分支名</td>
+<td>推送</td>
+<td>完整写法：git push 远程仓库别名 本地分支名:远程分支名  -u：建立通道后以后可以简写 git push</td>
+</tr>
+<tr>
+<td>git pull –rebase 远程仓库别名 分支名</td>
+<td>拉取合并</td>
+<td>合并没有关系的记录</td>
+</tr>
+<tr>
+<td>git clone 远程仓库地址</td>
+<td>克隆</td>
+<td>从0得到一个远程的Git仓库到本地使用</td>
+</tr>
+</tbody></table>
+
+    </div>
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          <i class="fa fa-tag"></i>
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"> git</a>
+          </div>
+           <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var golden_ratio = 0.618033988749895;
+                    var s = 0.5;
+                    var v = 0.999;
+                    var h = golden_ratio + Math.random()*0.8 - 0.5;
+                    var h_i = parseInt(h * 6);
+                    var f = h * 6 - h_i;
+                    var p = v * (1 - s);
+                    var q = v * (1 - f * s);
+                    var t = v * (1 - (1 - f) * s);
+                    var r, g, b;
+                    switch (h_i) {
+                        case 0:
+                            r = v;
+                            g = t;
+                            b = p;
+                            break;
+                        case 1:
+                            r = q;
+                            g = v;
+                            b = p;
+                            break;
+                        case 2:
+                            r = p;
+                            g = v;
+                            b = t;
+                            break;
+                        case 3 :
+                            r = p;
+                            g = q;
+                            b = v;
+                            break;
+                        case 4:
+                            r = t;
+                            g = p;
+                            b = v;
+                            break;
+                        case 5:
+                            r = v;
+                            g = p;
+                            b = q;
+                            break;
+                        default:
+                            r = 1;
+                            g = 1;
+                            b = 1;
+                      }
+                    tags[j].style.background = "rgba("+parseInt(r*255)+","+parseInt(g*255)+","+parseInt(b*255)+","+0.5+")";
+                }
+            }                        
+            </script>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/19/AJAX%E5%AD%A6%E4%B9%A0/" rel="prev" title="AJAX学习">
+                  <i class="fa fa-angle-left"></i> AJAX学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/11/19/Node-js%E4%B8%8EWebpack/" rel="next" title="Node.js与Webpack">
+                  Node.js与Webpack <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>    
+        <div>
+          <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+        </div>
+    </footer>
+    
+  </article>
+  
+</div>
+
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jay CHAN</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">
+    <!--Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> --> 
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/01/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"eclipse0326/eclipse0326.github.io","repo_id":"R_kgDONOkVYg","category":"Announcements","category_id":"DIC_kwDONOkVYs4CkO3g","mapping":"pathname","strict":0,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"en","crossorigin":"anonymous","input_position":"bottom","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
+<!--页面点击小桃心-->
+
+  <script type="text/javascript" src="/js/love.js"></script>
+
+
+<!--崩溃欺骗-->
+
+  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+
+
+
